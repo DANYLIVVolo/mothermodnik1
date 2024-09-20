@@ -1,0 +1,165 @@
+/* Основні стилі для сторінки */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Стилі для шапки (header) */
+header {
+    position: relative;
+    text-align: center;
+    color: #fff;
+    padding: 20px 0;
+    background-color: #333;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header img.logotyp {
+    height: 50px;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+header a:hover {
+    color: #007bff;
+}
+
+header .koshik {
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+header .koshik:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+header .korzina {
+    margin-left: 10px;
+    height: 20px;
+    width: 20px;
+}
+
+header .odiag {
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+    display: block;
+}
+
+header .h1 {
+    position: relative;
+    margin: 20px 0 10px;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    margin-top: 10px;
+}
+
+/* Стилі для основного контенту */
+main {
+    padding: 100px 20px 20px; /* Відступи для контенту під шапкою */
+    text-align: center;
+}
+
+/* Стилі для підвалу (footer) */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+/* Основні стилі для форми */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"] {
+    width: calc(100% - 22px); /* Розрахунок ширини для врахування відступів */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Щоб padding і border враховувалися в ширині */
+}
+
+.contact-form input[type="radio"] {
+    margin-right: 10px;
+}
+
+.contact-form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.contact-form legend {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.contact-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн-магазин Мамин моднік</title>
+    <link rel="stylesheet" href="css/style3.css"/>
+</head>
+<body>
+<header>  <nav>
+    <img class="logotyp" src="img/Frame (7).png">
+    <a href="#product">Товари</a>
+    <a href="#pronas">Про нас</a>
+    <a href=" css/indexindex.html">Доставка</a>
+    <a class="koshik" href="">Кошик<img class="korzina" src="img/Frame.png"></a>
+    </nav>
+    <img class="odiag" src="img/spring-wardrobe-switch-still-life.jpg">
+    <h1 class="h1">Ваш кошик</h1>
+    <a href="index.html">Повернутися на головну</a>
+</header>
+<main>
+   
+        <div id="cart-items"></div>
+        <button id="clear-cart">Очистити кошик</button>
+
+    
+    <form class="contact-form">
+        <label for="first-name">Ім'я</label>
+        <input type="text" id="first-name" name="first-name" placeholder="Ім'я" required> <br>
+    
+        <label for="last-name">Прізвище</label>
+        <input type="text" id="last-name" name="last-name" placeholder="Прізвище" required> <br>
+    
+        <label for="email">Електронна пошта</label>
+        <input type="email" id="email" name="email" placeholder="Електронна пошта" required> <br>
+    
+        <label for="phone">Номер телефону</label>
+        <input type="tel" id="phone" name="phone" placeholder="Номер телефону" required> <br>
+    
+        <fieldset>
+            <legend>Вибір доставки</legend>
+            <label><input type="radio" name="delivery" value="standard"> Стандарт</label><br>
+            <label><input type="radio" name="delivery" value="express"> Швидка</label><br>
+            <label><input type="radio" name="delivery" value="self-pickup"> Самовиніс</label><br>
+        </fieldset>
+    
+        <button type="submit">Відправити</button>
+    </form>
+    
+</main>
+<footer></footer>
+<script> 
+   document.addEventListener("DOMContentLoaded", () => {
+    const cartItemsContainer = document.getElementById("cart-items");
+
+    function displayCart() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cartItemsContainer.innerHTML = "";
+
+        cart.forEach((item, index) => {
+            const itemElement = document.createElement("div");
+            itemElement.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" style="width:50px;">
+                <span>${item.name}</span>
+                <span>${item.price}</span>
+                <input type="number" value="${item.quantity}" min="1" data-index="${index}">
+                <button class="remove-button" data-index="${index}">Видалити</button>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+        });
+
+        // Додавання обробників для зміни кількості
+        const quantityInputs = document.querySelectorAll('input[type="number"]');
+        quantityInputs.forEach(input => {
+            input.addEventListener('change', (e) => {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const index = e.target.dataset.index;
+                cart[index].quantity = parseInt(e.target.value);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                displayCart();
+            });
+        });
+
+        // Додавання обробників для видалення товарів
+        const removeButtons = document.querySelectorAll(".remove-button");
+        removeButtons.forEach(button => {
+            button.addEventListener("click", (e) => {
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const index = e.target.dataset.index;
+                cart.splice(index, 1);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                displayCart();
+            });
+        });
+    }
+
+    displayCart();
+
+    // Очистити кошик
+    const clearCartButton = document.getElementById("clear-cart");
+    clearCartButton.addEventListener("click", () => {
+        localStorage.removeItem("cart");
+        displayCart();
+    });
+}); 
+</script>
+</body>
+</html>
